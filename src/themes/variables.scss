@@ -1,0 +1,13 @@
+$success: #609d43;
+
+$font-family-sans-serif: 'Montserrat', sans-serif;
+
+$navbar-light-color: black;
+
+$nav-pills-link-active-bg: $success;
+
+$root-z-index-of-modal: 1030;
+
+$cdk-z-index-overlay-container: $root-z-index-of-modal+1;
+$cdk-z-index-overlay: $root-z-index-of-modal+1;
+$cdk-z-index-overlay-backdrop: $root-z-index-of-modal+1;

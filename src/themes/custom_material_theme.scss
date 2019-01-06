@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@import './variables.scss';
+
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-light-green, 700, A100, A700);
+$candy-app-accent:  mat-palette($mat-teal, A200, A100, A400);
+
+$candy-app-warn:    mat-palette($mat-red);
+
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+
+@include angular-material-theme($candy-app-theme);
+
+.mat-tab-label {
+  opacity: 1 !important;
+
+  .mat-tab-label-content{
+    color:$navbar-light-color !important;
+    font-family: $font-family-sans-serif;
+    font-weight: bold;
+  }
+}

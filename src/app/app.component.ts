@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'starter';
+  title = 'Angular Material Starter with Ng-Bootstrap support';
 }

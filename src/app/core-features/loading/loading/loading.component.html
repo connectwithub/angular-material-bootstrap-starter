@@ -1,0 +1,9 @@
+<div mat-dialog-title>
+  <mat-progress-spinner *ngIf="data.processing" class="mx-auto" color="accent" mode="indeterminate"></mat-progress-spinner>
+  <h1 *ngIf="!data.processing" class="text-center display-3" [ngClass]="{ 'text-success':data.success, 'text-danger': data.error }">
+    <i class="fas" [ngClass]="{ 'fa-check-circle':data.success, 'fa-times-circle': data.error }"></i>
+  </h1>
+</div>
+<mat-dialog-content>
+  <h3 class="text-center">{{data.message}}</h3>
+</mat-dialog-content>

@@ -27,7 +27,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/themes/custom_material_theme.scss",
+              "src/themes/custom_bootstrap.scss",
             ],
             "scripts": []
           },
