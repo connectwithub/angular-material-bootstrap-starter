@@ -1,13 +1,26 @@
-$success: #609d43;
+$primary: #609d43;
+$image-card-overlay-color: black;
+$image-card-overlay-transparentize: 0.4;
+$color-muted: #00000080;
 
 $font-family-sans-serif: 'Montserrat', sans-serif;
 
-$navbar-light-color: black;
+$navbar-light-color: $color-muted;
+$navbar-light-brand-color: $navbar-light-color;
 
-$nav-pills-link-active-bg: $success;
+$nav-pills-link-active-bg: $primary;
 
 $root-z-index-of-modal: 1030;
 
 $cdk-z-index-overlay-container: $root-z-index-of-modal+1;
 $cdk-z-index-overlay: $root-z-index-of-modal+1;
 $cdk-z-index-overlay-backdrop: $root-z-index-of-modal+1;
+
+$sidebar-width: 260px;
+$sidenav-font-color: white;
+$sidenav-overlay-color-start: #9368e9b8;
+$sidenav-overlay-color-end: #943beac7;
+$sidenav-overlay-color-dark: #000;
+$sidenav-active-link-color: #ffffff3b;
+
+$view-product-card-height: 20rem;

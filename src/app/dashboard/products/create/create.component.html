@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="row my-3 justify-content-center">
+    <div class="col-sm-8">
+      <div class="card hover-shadow block-header muted">
+        <div class="card-header">
+          <h5>Create Product</h5>
+        </div>
+        <div class="card-body">
+          <ng-container *ngTemplateOutlet="createProductFormTemplate"></ng-container>
+        </div>
+        <div class="card-footer text-muted">
+          <button class="btn" mat-stroked-button color="warn" (click)="createForms()">Reset</button>
+          <button class="btn float-right"mat-stroked-button color="primary" [disabled]="!createProductForm.valid" (click)="saveProduct()">Add Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #createProductFormTemplate>
+  <form class="" [formGroup]="createProductForm">
+    <div class="">
+      <mat-form-field class="w-100" appearance="outline" >
+        <mat-label>Name*</mat-label>
+        <input matInput formControlName="name" placeholder="Name of Product">
+        <mat-error *ngIf="createProductForm.controls['name'].hasError('required')">Name is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="">
+      <mat-form-field class="w-100" appearance="outline" >
+        <mat-label>Product Id*</mat-label>
+        <input matInput formControlName="productId" placeholder="Product Id eg. Product001">
+        <mat-error *ngIf="createProductForm.controls['productId'].hasError('required')">Product Id is Required</mat-error>
+        <mat-error *ngIf="createProductForm.controls['productId'].hasError('productIdExists')">Product Id Unavailable</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="">
+      <mat-form-field class="w-100" appearance="outline" >
+        <mat-label>Product Description*</mat-label>
+        <textarea matInput rows="4" formControlName="description" placeholder="Description of product"></textarea>
+        <mat-error *ngIf="createProductForm.controls['description'].hasError('required')">Product Description is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field class="w-100" appearance="outline" >
+          <mat-label>Product Cost*</mat-label>
+          <input type="number" matInput formControlName="sp" placeholder="Selling Price of product without tax">
+          <mat-error *ngIf="createProductForm.controls['sp'].hasError('required')">Product Cost is Required</mat-error>
+          <mat-error *ngIf="createProductForm.controls['sp'].hasError('min')">Product Cost should atleast be 0</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm">
+        <mat-form-field class="w-100" appearance="outline" >
+          <mat-label>Product Tax</mat-label>
+          <input type="number" matInput formControlName="tax" placeholder="Tax if any applicable">
+          <mat-error *ngIf="createProductForm.controls['tax'].hasError('min')">Product Tax should atleast be 0</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline" >
+          <mat-label>Product Type*</mat-label>
+          <mat-select placeholder="Type of Product" formControlName="type" (selectionChange)="typeChange()">
+            <mat-option [value]="type" *ngFor="let type of objectVals(PRODUCT_TYPES)">{{type | uppercase}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="createProductForm.controls['productId'].hasError('required')">Product Type is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" *ngIf="showCompositeForm">
+      <div class="col" formArrayName="related_number">
+        <h5>Products Related to this Product</h5>
+        <div class="row align-items-baseline" *ngFor="let item of createProductFormRelatedNumber.controls; let i = index;">
+          <ng-container [formGroupName]="i">
+            <div class="col-sm-6">
+              <mat-form-field class="w-100" appearance="outline" >
+                <mat-label>Composing Product*</mat-label>
+                <mat-select placeholder="Composing Product" (selectionChange)="relatedProductSelect($event)" formControlName="product">
+                  <mat-option [value]="product" *ngFor="let product of products">{{product.name}} ({{product.productId}})</mat-option>
+                </mat-select>
+                <mat-error *ngIf="createProductFormRelatedNumber.controls[i].controls['product'].hasError('required')">Parent Product is Required</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="w-100" appearance="outline" >
+                <mat-label>Product Units*</mat-label>
+                <input type="number" class="text-right" matInput formControlName="units" step="1" placeholder="Units required">
+                <span matSuffix>Unit{{createProductFormRelatedNumber.controls[i].controls['units'].value>1?'s':''}}</span>
+                <mat-error *ngIf="createProductFormRelatedNumber.controls[i].controls['units'].hasError('required')"> Product Quantity is Required</mat-error>
+                <mat-error *ngIf="createProductFormRelatedNumber.controls[i].controls['units'].hasError('min')">Product Quantity should atleast be 1</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+              <button mat-icon-button class="btn" type="button" [disabled]="this.createProductFormRelatedNumber.length==1" (click)="deleteRelatedProduct(i)">
+                <fa-icon [icon]="['fas','times']" size="lg"></fa-icon>
+              </button>
+            </div>
+          </ng-container>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button mat-icon-button class="btn float-right" type="button" (click)="addProduct()">
+              <fa-icon [icon]="['fas','plus']"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>

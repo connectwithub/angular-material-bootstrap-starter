@@ -1,0 +1,15 @@
+<mat-sidenav-container class="h-100">
+  <mat-sidenav #menu [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'" [position]="(screenWidth > 840) ? 'start' : 'end'">
+    <udb-sidenav></udb-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container-fluid position-relative h-100">
+      <udb-d-navbar [menu]="menu" class="m-x-nav d-block"></udb-d-navbar>
+      <div class="row h-content">
+        <div class="col py-3">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

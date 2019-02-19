@@ -1,7 +1,9 @@
 <div mat-dialog-title>
   <mat-progress-spinner *ngIf="data.processing" class="mx-auto" color="accent" mode="indeterminate"></mat-progress-spinner>
   <h1 *ngIf="!data.processing" class="text-center display-3" [ngClass]="{ 'text-success':data.success, 'text-danger': data.error }">
-    <i class="fas" [ngClass]="{ 'fa-check-circle':data.success, 'fa-times-circle': data.error }"></i>
+    <span *ngIf="data.success"><fa-icon [icon]="['fas','check-circle']"></fa-icon></span>
+    <span *ngIf="data.error"><fa-icon [icon]="['fas','times-circle']"></fa-icon></span>
+    <!-- <i class="fas" [ngClass]="{ 'fa-check-circle':data.success, 'fa-times-circle': data.error }"></i> -->
   </h1>
 </div>
 <mat-dialog-content>

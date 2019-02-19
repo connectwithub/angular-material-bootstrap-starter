@@ -3,3 +3,7 @@
 @import './variables.scss';
 
 @import "~bootstrap/scss/bootstrap.scss";
+
+.card-img-overlay{
+  background-color: transparentize($image-card-overlay-color, $image-card-overlay-transparentize);
+}
