@@ -9,11 +9,11 @@ const routes: Routes = [
     children:[
       {
         path:'rfq2q',
-        loadChildren: './rfq2q/rfq2q.module#Rfq2qModule'
+        loadChildren: () => import('./rfq2q/rfq2q.module').then(m => m.Rfq2qModule)
       },
       {
         path:'products',
-        loadChildren: './products/products.module#ProductsModule'
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
       {
         path:"*",
