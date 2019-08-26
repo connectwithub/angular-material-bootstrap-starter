@@ -1,19 +1,16 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { GraphQLModule } from '../graphql.module';
 
 import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
-    NgbModule.forRoot(),
-    GraphQLModule
+    NgbModule
   ],
   providers: [],
   exports:[
     NgbModule,
-    GraphQLModule
   ]
 })
 export class CoreModule {

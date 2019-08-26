@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "strapi-angular": {
+    "starter": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/strapi-angular",
+            "outputPath": "dist/starter",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "strapi-angular:build"
+            "browserTarget": "starter:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "strapi-angular:build:production"
+              "browserTarget": "starter:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "strapi-angular:build"
+            "browserTarget": "starter:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
         }
       }
     },
-    "strapi-angular-e2e": {
+    "starter-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -117,11 +117,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "strapi-angular:serve"
+            "devServerTarget": "starter:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "strapi-angular:serve:production"
+              "devServerTarget": "starter:serve:production"
             }
           }
         },
@@ -137,5 +137,5 @@
       }
     }
   },
-  "defaultProject": "strapi-angular"
+  "defaultProject": "starter"
 }

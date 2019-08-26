@@ -24,27 +24,3 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($candy-app-theme);
-
-.mat-tab-label {
-  opacity: 1 !important;
-
-  .mat-tab-label-content{
-    color:$navbar-light-color !important;
-    font-family: $font-family-sans-serif;
-    font-weight: bold;
-  }
-}
-
-mat-sidenav {
-  width: $sidebar-width;
-}
-
-.mat-button{
-  &:focus{
-    box-shadow: none!important;
-  }
-}
-
-.mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix{
-  top:0 !important;
-}

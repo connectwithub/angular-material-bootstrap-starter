@@ -4,13 +4,6 @@
 
 export const environment = {
   production: false,
-  app:{
-    name:'Industry Man'
-  },
-  graphql:{
-    url: 'http://localhost:1337/graphql'
-  },
-  imgServerUrl:'http://localhost:1337/'
 };
 
 /*
