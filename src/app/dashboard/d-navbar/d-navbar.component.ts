@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatSidenav } from "@angular/material";
+import { MatSidenav } from "@angular/material/sidenav";
 import { NavbarService } from "../services/navbar/navbar.service";
 
 @Component({
